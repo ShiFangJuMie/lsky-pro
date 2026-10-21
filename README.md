@@ -1,101 +1,73 @@
-<img align="right" width="100" src="https://avatars.githubusercontent.com/u/100565733?s=200" alt="Lsky Pro Logo"/>
+# Lsky Pro
 
-<h1 align="left"><a href="https://www.lsky.pro">Lsky Pro</a></h1>
+基于 Laravel 的开源图床，支持图片上传、管理、分享及多种存储后端。
 
-☁ Your photo album on the cloud.
+本仓库是 [lsky-org/lsky-pro](https://github.com/lsky-org/lsky-pro) 的独立维护 fork，由 [ShiFangJuMie](https://github.com/ShiFangJuMie) 维护。当前重点是安全修复、运行环境兼容性和 Docker 部署，以支持现有实例继续使用。
 
-[![PHP](https://img.shields.io/badge/PHP->=8.0-orange.svg)](http://php.net)
-[![Release](https://img.shields.io/github/v/release/lsky-org/lsky-pro)](https://github.com/lsky-org/lsky-pro/releases)
-[![Issues](https://img.shields.io/github/issues/lsky-org/lsky-pro)](https://github.com/lsky-org/lsky-pro/issues)
-[![Code size](https://img.shields.io/github/languages/code-size/lsky-org/lsky-pro?color=blueviolet)](https://github.com/lsky-org/lsky-pro)
-[![Repo size](https://img.shields.io/github/repo-size/lsky-org/lsky-pro?color=eb56fd)](https://github.com/lsky-org/lsky-pro)
-[![Last commit](https://img.shields.io/github/last-commit/lsky-org/lsky-pro/dev)](https://github.com/lsky-org/lsky-pro/commits/dev)
-[![License](https://img.shields.io/badge/license-GPL_V3.0-yellowgreen.svg)](https://github.com/lsky-org/lsky-pro/blob/master/LICENSE)
+[Docker 部署](docs/docker.md) · [参与贡献](#参与贡献) · [提交记录](https://github.com/ShiFangJuMie/lsky-pro/commits) · [上游项目](https://github.com/lsky-org/lsky-pro)
 
-[官网](https://www.lsky.pro) &middot;
-[文档](https://docs.lsky.pro) &middot;
-[社区](https://github.com/lsky-org/lsky-pro/discussions) &middot;
-[演示](https://pic.vv1234.cn) &middot;
-[Telegram 群组](https://t.me/lsky_pro)
+## 维护范围
 
-> [!WARNING]
-> 开源版本已停止维护，不再进行新特性更新和 bug 修复。
+- PHP 运行环境与基础镜像的安全更新。
+- Docker 构建、部署兼容性和已有数据卷的迁移说明。
+- 使用中发现的问题修复、依赖兼容性检查及文档改进。
 
-> master 分支为未安装三方拓展的版本，通常包含了最新未发布版本的一些实验性新特性和修复补丁，正式版本请点击 [这里](https://github.com/lsky-org/lsky-pro/releases) 下载。  
-> 发现 bug 请提交 [issues](https://github.com/lsky-org/lsky-pro/issues) (提问前建议阅读[提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md))  
-> 有任何想法、建议、或分享，请移步 [社区](https://github.com/lsky-org/lsky-pro/discussions)
+本 fork 的变更、部署方式和问题反馈以本仓库为准；原项目的使用文档可作为既有功能的参考。
 
-![看不见图片请使用科学上网](https://user-images.githubusercontent.com/22728201/157242302-bfbd04a0-fb30-4241-800e-cc2b1dad9b19.png)
-![看不见图片请使用科学上网](https://user-images.githubusercontent.com/22728201/157242314-5716d578-fee5-4083-8d91-0d98cb2545d9.png)
+## 主要功能
 
-### 📌 TODO
-* [x] 支持`本地`等多种第三方云储存 `AWS S3`、`阿里云 OSS`、`腾讯云 COS`、`七牛云`、`又拍云`、`SFTP`、`FTP`、`WebDav`、`Minio`
-* [x] 多种数据库驱动支持，`MySQL 5.7+`、`PostgreSQL 9.6+`、`SQLite 3.8.8+`、`SQL Server 2017+`
-* [x] 支持配置使用多种缓存驱动，`Memcached`、`Redis`、`DynamoDB`、等其他关系型数据库，默认以文件的方式缓存
-* [x] 多图上传、拖拽上传、粘贴上传、动态设置策略上传、复制、一键复制链接
-* [x] 强大的图片管理功能，瀑布流展示，支持鼠标右键、单选多选、重命名等操作
-* [x] 自由度极高的角色组配置，可以为每个组配置多个储存策略，同时储存策略可以配置多个角色组
-* [x] 可针对角色组设置上传文件、文件夹路径命名规则、上传频率限制、图片审核等功能
-* [x] 支持图片水印、文字水印、水印平铺、设置水印位置、X/y 轴偏移量设置、旋转角度等
-* [x] 支持通过接口上传、管理图片、管理相册
-* [x] 支持在线增量更新、跨版本更新
-* [x] 图片广场
+- 图片上传与管理：批量、拖拽、粘贴上传，图片重命名、链接复制和相册管理。
+- 多种存储后端：本地、AWS S3、MinIO、阿里云 OSS、腾讯云 COS、七牛云、又拍云、FTP、SFTP 和 WebDAV。
+- 用户组与存储策略：为用户组配置多个存储策略、上传频率、文件命名规则和图片审核。
+- 图片处理：缩略图、图片水印、文字水印，以及水印的平铺、定位和旋转。
+- API 与分享：通过接口上传和管理图片、相册，支持图片广场。
+- 数据库与缓存：支持 MySQL、PostgreSQL、SQLite 等数据库，支持文件缓存和 Redis 等缓存后端；具体可用后端取决于部署环境中的驱动。
 
-### 🛠 安装要求
-- PHP >= 8.0.2
-- BCMath PHP 扩展
-- Ctype PHP 扩展
-- DOM PHP 拓展
-- Fileinfo PHP 扩展
-- JSON PHP 扩展
-- Mbstring PHP 扩展
-- OpenSSL PHP 扩展
-- PDO PHP 扩展
-- Tokenizer PHP 扩展
-- XML PHP 扩展
-- Imagick 拓展
-- exec、shell_exec 函数
-- readlink、symlink 函数
-- putenv、getenv 函数
-- chmod、chown、fileperms 函数
+## Docker 构建与部署
 
-### 😋 鸣谢
-- [Laravel](https://laravel.com)
-- [Tailwindcss](https://tailwindcss.com)
-- [Fontawesome](https://fontawesome.com)
-- [Echarts](https://echarts.apache.org)
-- [Intervention/image](https://github.com/Intervention/image)
-- [league/flysystem](https://flysystem.thephpleague.com)
-- [overtrue](https://github.com/overtrue)
-- [Jquery](https://jquery.com)
-- [jQuery-File-Upload](https://github.com/blueimp/jQuery-File-Upload)
-- [Alpinejs](https://alpinejs.dev/)
-- [Viewer.js](https://github.com/fengyuanchen/viewerjs)
-- [DragSelect](https://github.com/ThibaultJanBeyer/DragSelect)
-- [Justified-Gallery](https://github.com/miromannino/Justified-Gallery)
-- [Clipboard.js](https://github.com/zenorocha/clipboard.js)
+当前镜像使用 **PHP 8.2.35**，包含 CVE-2026-109618、CVE-2026-109619 的上游修复。镜像从本仓库源码构建，应用依赖按 `composer.lock` 安装。
 
-### 💰 捐赠
-Lsky Pro 的开发和更新等，都是作者在业余时间独立开发，并免费开源使用，如果您认可我的作品，并且觉得对你有所帮助我愿意接受来自各方面的捐赠😃。
-<table width="100%">
-    <tr>
-        <th>支付宝</th>
-        <th>微信</th>
-    </tr>
-    <tr>
-        <td><img alt="看不见图片请使用科学上网" src="https://raw.githubusercontent.com/lsky-org/lsky-pro/82988ebe2edd32264d609b26bf9132b3dce7c39e/public/static/app/images/demo/alipay.png"></td>
-        <td><img alt="看不见图片请使用科学上网" src="https://raw.githubusercontent.com/lsky-org/lsky-pro/82988ebe2edd32264d609b26bf9132b3dce7c39e/public/static/app/images/demo/wechat.jpeg"></td>
-    </tr>
-</table>
+在仓库根目录执行：
 
-### 🤩 Stargazers over time
-[![Stargazers over time](https://starchart.cc/lsky-org/lsky-pro.svg)](https://starchart.cc/lsky-org/lsky-pro)
+```sh
+docker build -t lsky-pro:php-8.2.35 .
+sh docker/test-image.sh lsky-pro:php-8.2.35
+```
 
-### 📧 联系我
-- Email: i@wispx.cn
+测试使用独立临时容器和数据卷，检查 PHP/Apache、HTTP/HTTPS、图片处理和已有卷的启动保护。
 
-### 📃 开源许可
-[GPL 3.0](https://opensource.org/licenses/GPL-3.0)
+镜像兼容原 `halcyonazure/lsky-pro-docker` 的 `/var/www/html` 应用卷，默认 HTTP、HTTPS 容器端口分别为 `8089`、`8088`。替换已有实例前，请先备份并在副本上验证。完整步骤、环境变量和回退方式见 [Docker 部署文档](docs/docker.md)。
+
+应用内置的在线更新仍连接上游服务。更新本 fork 请使用本仓库源码和镜像构建流程，避免上游更新覆盖 fork 的改动。
+
+## 运行环境
+
+当前 Docker 构建使用 PHP 8.2.35、Composer 2，并包含所需的 PHP 扩展。手动部署需满足锁文件中的依赖约束，并核对以下要求：
+
+- PHP 扩展：BCMath、Ctype、cURL、DOM、Fileinfo、FTP、JSON、Mbstring、OpenSSL、PDO、Tokenizer、XML 和 Imagick，以及所选数据库对应的 PDO 驱动。
+- PHP 函数：`exec`、`shell_exec`、`readlink`、`symlink`、`putenv`、`getenv`、`chmod`、`chown` 和 `fileperms`。
+- Web 根目录指向 `public/`，并配置 URL 重写；运行用户需有应用所需的目录写入权限。
+
+完整依赖约束以 `composer.lock` 为准。手动部署前，可在仓库根目录检查运行环境：
+
+```sh
+composer --no-interaction --no-plugins --no-scripts check-platform-reqs --lock --no-dev
+```
+
+## 参与贡献
+
+欢迎通过[本仓库的 Pull Requests](https://github.com/ShiFangJuMie/lsky-pro/pulls) 提交修复和文档改进。请说明解决的问题、改动范围及验证方式。
+
+涉及运行问题时，请补充部署方式、PHP 版本、复现步骤和脱敏后的错误信息。
+
+## 上游与致谢
+
+原始项目：[lsky-org/lsky-pro](https://github.com/lsky-org/lsky-pro)。感谢原作者与所有贡献者。
+
+本项目基于 Laravel、Intervention Image、Flysystem、Tailwind CSS 等开源项目构建。各依赖的许可和署名见对应项目及其随附文件。
+
+## 开源许可
+
+沿用上游的 [GNU GPL v3 许可证](LICENSE)，保留原有版权和许可声明。
 
 Copyright (c) 2018-present Lsky Pro.
-
